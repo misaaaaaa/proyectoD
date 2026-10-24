@@ -16,3 +16,15 @@ pero ah! para links [noticia](https://www.mascotadictos.com/blog/perros-conocen-
 ![perrito](./imagenes/perri.webp)
 
 esta linea la agregué desde la web
+
+y esta linea la cambio desde vscode
+
+para hacer git push:
+
+``` 
+git add .
+git commit -m "mensaje"
+git push
+``` 
+
+
