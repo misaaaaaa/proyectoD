@@ -15,6 +15,16 @@
 }
 
 html {
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav {
   font-family: "Moe", sans-serif;
 }
 
@@ -75,4 +85,19 @@ img {
 footer {
   border-top: 2px solid var(--negro);
   font-size: 0.9rem;
+}
+
+.diagrama-main {
+  max-width: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
