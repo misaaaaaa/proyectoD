@@ -3,7 +3,8 @@ import { MarkerType } from "@xyflow/react";
 import { marked } from "marked";
 import Diagrama from "./Diagrama.jsx";
 
-const RADIO = 300;
+const SIZE = 170;
+const SEPARACION = SIZE + 70;
 const COLOR = "#462727";
 
 const norm = (t) =>
@@ -39,6 +40,28 @@ function parsearConexiones(cuerpo, items) {
   return edges;
 }
 
+// Posiciones aleatorias sin superposición (por el centro de cada burbuja).
+function posicionesAleatorias(n) {
+  const mitad = Math.max(SEPARACION, Math.sqrt(n) * SEPARACION * 0.8);
+  for (let intento = 0; intento < 200; intento++) {
+    const pts = [];
+    let tope = 0;
+    while (pts.length < n && tope++ < 500) {
+      const p = {
+        x: (Math.random() * 2 - 1) * mitad,
+        y: (Math.random() * 2 - 1) * mitad,
+      };
+      if (pts.every((q) => Math.hypot(p.x - q.x, p.y - q.y) >= SEPARACION))
+        pts.push(p);
+    }
+    if (pts.length === n) return pts;
+  }
+  return Array.from({ length: n }, (_, i) => {
+    const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+    return { x: Math.cos(a) * 300, y: Math.sin(a) * 300 };
+  });
+}
+
 function parsear(md) {
   const bloques = md
     .split(/^## /m)
@@ -50,7 +73,11 @@ function parsear(md) {
   const esCon = (b) => norm(b.titulo) === "conexiones";
   const items = bloques.filter((b) => !esCon(b));
   const con = bloques.find(esCon);
-  return { items, edges: con ? parsearConexiones(con.cuerpo, items) : [] };
+  return {
+    items,
+    edges: con ? parsearConexiones(con.cuerpo, items) : [],
+    posiciones: posicionesAleatorias(items.length),
+  };
 }
 
 export default function Marco() {
@@ -61,7 +88,7 @@ export default function Marco() {
     fetch("marcoteorico.md")
       .then((r) => r.text())
       .then((t) => setDatos(parsear(t)))
-      .catch(() => setDatos({ items: [], edges: [] }));
+      .catch(() => setDatos({ items: [], edges: [], posiciones: [] }));
   }, []);
 
   useEffect(() => {
@@ -71,17 +98,14 @@ export default function Marco() {
   }, []);
 
   if (!datos) return null;
-  const { items, edges } = datos;
+  const { items, edges, posiciones } = datos;
 
-  const nodes = items.map((it, i) => {
-    const a = -Math.PI / 2 + (i * 2 * Math.PI) / items.length;
-    return {
-      id: String(i),
-      type: "burbuja",
-      position: { x: Math.cos(a) * RADIO, y: Math.sin(a) * RADIO },
-      data: { label: it.titulo, size: 170, onClick: () => setAbierto(it) },
-    };
-  });
+  const nodes = items.map((it, i) => ({
+    id: String(i),
+    type: "burbuja",
+    position: posiciones[i],
+    data: { label: it.titulo, size: SIZE, onClick: () => setAbierto(it) },
+  }));
 
   return (
     <>
