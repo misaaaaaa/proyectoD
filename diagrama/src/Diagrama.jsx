@@ -4,8 +4,8 @@ import Arista from "./Arista.jsx";
 const oculto = { opacity: 0, top: "50%", left: "50%", pointerEvents: "none" };
 
 function Burbuja({ data }) {
-  const clases = `burbuja${data.centro ? " burbuja-centro" : ""}`;
-  const estilo = { width: data.size, height: data.size };
+  const clases = `burbuja${data.centro ? " burbuja-centro" : ""}${data.ovalo ? " burbuja-ovalo" : ""}`;
+  const estilo = { width: ancho(data), height: alto(data) };
   const contenido = (
     <>
       <Handle type="target" position={Position.Top} style={oculto} />
@@ -32,6 +32,10 @@ function Burbuja({ data }) {
   );
 }
 
+// Una burbuja puede ser círculo (`size`) u óvalo (`width` y `height`).
+const ancho = (d) => d.width ?? d.size;
+const alto = (d) => d.height ?? d.size;
+
 const nodeTypes = { burbuja: Burbuja };
 const edgeTypes = { flotante: Arista };
 
@@ -41,8 +45,8 @@ export default function Diagrama({ nodes: iniciales, edges }) {
     iniciales.map((n) => ({
       ...n,
       position: {
-        x: n.position.x - n.data.size / 2,
-        y: n.position.y - n.data.size / 2,
+        x: n.position.x - ancho(n.data) / 2,
+        y: n.position.y - alto(n.data) / 2,
       },
     }))
   );

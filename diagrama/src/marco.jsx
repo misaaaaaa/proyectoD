@@ -3,9 +3,15 @@ import { MarkerType } from "@xyflow/react";
 import { marked } from "marked";
 import Diagrama from "./Diagrama.jsx";
 
-const SIZE = 170;
-const SEPARACION = SIZE + 70;
-const COLOR = "#462727";
+const ANCHO = 300;
+const ALTO = 170;
+const MARGEN = 140; // espacio libre mínimo entre burbujas
+const SEPARACION = ANCHO + MARGEN;
+
+// ¿Están p y q lo bastante lejos para que sus óvalos no se toquen?
+const lejos = (p, q) =>
+  Math.hypot((p.x - q.x) / (ANCHO + MARGEN), (p.y - q.y) / (ALTO + MARGEN)) >= 1;
+const COLOR = "#d04a38";
 
 const norm = (t) =>
   t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
@@ -40,7 +46,8 @@ function parsearConexiones(cuerpo, items) {
   return edges;
 }
 
-// Posiciones aleatorias sin superposición (por el centro de cada burbuja).
+// Posiciones aleatorias sin superposición (por el centro de cada burbuja),
+// en un área más ancha que alta, como la pantalla.
 function posicionesAleatorias(n) {
   const mitad = Math.max(SEPARACION, Math.sqrt(n) * SEPARACION * 0.8);
   for (let intento = 0; intento < 200; intento++) {
@@ -48,17 +55,17 @@ function posicionesAleatorias(n) {
     let tope = 0;
     while (pts.length < n && tope++ < 500) {
       const p = {
-        x: (Math.random() * 2 - 1) * mitad,
-        y: (Math.random() * 2 - 1) * mitad,
+        x: (Math.random() * 2 - 1) * mitad * 1.3,
+        y: (Math.random() * 2 - 1) * mitad * 0.6,
       };
-      if (pts.every((q) => Math.hypot(p.x - q.x, p.y - q.y) >= SEPARACION))
+      if (pts.every((q) => lejos(p, q)))
         pts.push(p);
     }
     if (pts.length === n) return pts;
   }
   return Array.from({ length: n }, (_, i) => {
     const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
-    return { x: Math.cos(a) * 300, y: Math.sin(a) * 300 };
+    return { x: Math.cos(a) * SEPARACION, y: Math.sin(a) * SEPARACION * 0.6 };
   });
 }
 
@@ -85,7 +92,7 @@ export default function Marco() {
   const [abierto, setAbierto] = useState(null);
 
   useEffect(() => {
-    fetch("marcoteorico.md")
+    fetch("contenido/marcoteorico.md")
       .then((r) => r.text())
       .then((t) => setDatos(parsear(t)))
       .catch(() => setDatos({ items: [], edges: [], posiciones: [] }));
@@ -104,7 +111,7 @@ export default function Marco() {
     id: String(i),
     type: "burbuja",
     position: posiciones[i],
-    data: { label: it.titulo, size: SIZE, onClick: () => setAbierto(it) },
+    data: { label: it.titulo, width: ANCHO, height: ALTO, onClick: () => setAbierto(it) },
   }));
 
   return (
