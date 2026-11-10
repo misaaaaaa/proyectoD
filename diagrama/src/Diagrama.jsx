@@ -59,6 +59,10 @@ export default function Diagrama({ nodes: iniciales, edges }) {
       onNodesChange={onNodesChange}
       fitView
       fitViewOptions={{ padding: 0.15 }}
+      // Zoom con dos dedos (celular), rueda o trackpad (desktop). El mínimo bajo
+      // permite alejarse lo suficiente para ver todo en pantallas angostas.
+      minZoom={0.15}
+      maxZoom={2.5}
       nodesConnectable={false}
       elementsSelectable={false}
       proOptions={{ hideAttribution: true }}
