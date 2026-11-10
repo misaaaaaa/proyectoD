@@ -4,6 +4,7 @@ import "./diagrama.css";
 import Diagrama from "./Diagrama.jsx";
 import Marco from "./marco.jsx";
 import Referentes from "./referentes.jsx";
+import Biblio from "./biblio.jsx";
 import { nodes, edges } from "./datos.js";
 
 const inicio = document.getElementById("diagrama");
@@ -14,3 +15,6 @@ if (marco) createRoot(marco).render(<Marco />);
 
 const referentes = document.getElementById("referentes");
 if (referentes) createRoot(referentes).render(<Referentes />);
+
+const biblio = document.getElementById("biblio");
+if (biblio) createRoot(biblio).render(<Biblio />);
