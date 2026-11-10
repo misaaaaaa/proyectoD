@@ -70,6 +70,7 @@ y abre `http://localhost:8000`.
 | `diagrama/src/datos.js` | Nodos y conexiones del diagrama del inicio |
 | `diagrama/src/marco.jsx` | Lee `contenido/marcoteorico.md` y arma el diagrama con su overlay |
 | `diagrama/src/referentes.jsx` | Lee `contenido/referentes.md`: alterna sus imágenes cada 500 ms y al hacer click abre un overlay con la imagen y su texto |
+| `diagrama/src/biblio.jsx` | Lee `contenido/biblio.md` y lo muestra como texto en `biblio.html` |
 | `diagrama/src/Diagrama.jsx` | Componente base (burbujas y React Flow) |
 | `diagrama/src/Arista.jsx` | Línea de conexión: termina en el borde del círculo y admite texto |
 | `diagrama/src/diagrama.css` | Estilo de burbujas, líneas y overlay |

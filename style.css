@@ -143,3 +143,8 @@ footer {
 .volver ~ main:not(.diagrama-main):not(.referentes-main) {
   padding-top: 4.5rem;
 }
+
+/* Bibliografía: los enlaces largos se cortan para no desbordar en celular. */
+.biblio p {
+  overflow-wrap: anywhere;
+}
