@@ -55,7 +55,7 @@ function curva(p1, p2, forma) {
   return [path, mid("x"), mid("y")];
 }
 
-// Punto del borde del círculo `nodo` en dirección a `otro`.
+// Punto del borde de la burbuja `nodo` (círculo u óvalo) en dirección a `otro`.
 function borde(nodo, otro) {
   const centro = (n) => ({
     x: n.internals.positionAbsolute.x + n.measured.width / 2,
@@ -63,9 +63,12 @@ function borde(nodo, otro) {
   });
   const a = centro(nodo);
   const b = centro(otro);
-  const r = nodo.measured.width / 2;
-  const d = Math.hypot(b.x - a.x, b.y - a.y) || 1;
-  return { x: a.x + ((b.x - a.x) / d) * r, y: a.y + ((b.y - a.y) / d) * r };
+  const rx = nodo.measured.width / 2;
+  const ry = nodo.measured.height / 2;
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const k = 1 / (Math.hypot(dx / rx, dy / ry) || 1);
+  return { x: a.x + dx * k, y: a.y + dy * k };
 }
 
 export default function Arista({ id, source, target, markerStart, markerEnd, label }) {

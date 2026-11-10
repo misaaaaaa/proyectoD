@@ -50,7 +50,7 @@ Cada vez que cambies algo dentro de `diagrama/`:
 npm run build
 ```
 
-Cambiar solo `marcoteorico.md` **no** requiere compilar: basta recargar la página.
+Cambiar solo `contenido/marcoteorico.md` **no** requiere compilar: basta recargar la página.
 
 ### Ver el sitio
 
@@ -66,8 +66,10 @@ y abre `http://localhost:8000`.
 
 | Archivo | Qué hace |
 |---|---|
+| `contenido/` | Archivos `.md` con el contenido de cada página (`marcoteorico.md`, `referentes.md`, `ensayos.md`, `metodologia.md`, `biblio.md`) |
 | `diagrama/src/datos.js` | Nodos y conexiones del diagrama del inicio |
-| `diagrama/src/marco.jsx` | Lee `marcoteorico.md` y arma el diagrama con su overlay |
+| `diagrama/src/marco.jsx` | Lee `contenido/marcoteorico.md` y arma el diagrama con su overlay |
+| `diagrama/src/referentes.jsx` | Lee `contenido/referentes.md`: alterna sus imágenes cada 500 ms y al hacer click abre un overlay con la imagen y su texto |
 | `diagrama/src/Diagrama.jsx` | Componente base (burbujas y React Flow) |
 | `diagrama/src/Arista.jsx` | Línea de conexión: termina en el borde del círculo y admite texto |
 | `diagrama/src/diagrama.css` | Estilo de burbujas, líneas y overlay |
@@ -79,7 +81,7 @@ Se edita en `diagrama/src/datos.js`: la lista `secciones` define las burbujas qu
 
 ### Diagrama del marco teórico
 
-Se construye desde `marcoteorico.md`:
+Se construye desde `contenido/marcoteorico.md`:
 
 - Cada `## Título` es una burbuja. El texto de abajo aparece en un overlay al hacer click (se cierra con ×, con Esc o haciendo click fuera).
 - El contenido del overlay se escribe en markdown.

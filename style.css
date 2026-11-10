@@ -4,9 +4,16 @@
   font-display: swap;
 }
 
+/* Versión más gruesa de Moe. Úsala con font-family: "Moe Bold". */
+@font-face {
+  font-family: "Moe Bold";
+  src: url("typos/moe-bold.otf") format("opentype");
+  font-display: swap;
+}
+
 :root {
-  --ambar: #e7d399;
-  --negro: #462727db;
+  --ambar: #f0d6a5;
+  --negro: #d04a38;
   --rojo: #FF0000;
 }
 
@@ -45,8 +52,18 @@ footer {
   padding: 1.5rem 1.25rem;
 }
 
+nav {
+  font-size: 1.4rem;
+}
+
+h2 { font-size: 1.875em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.05em; }
+h6 { font-size: 0.85em; }
+
 h1 {
-  font-size: 2.5rem;
+  font-size: 3.125rem;
   line-height: 1.1;
   margin: 0 0 1rem;
 }
@@ -100,4 +117,30 @@ footer {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* Flecha para volver al inicio, arriba a la izquierda. */
+.volver {
+  position: fixed;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 5;
+  padding: 0 0.5rem;
+  font-family: "Moe Bold", "Moe", sans-serif;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: #d04a38;
+  background: #f0d6a5;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.volver:hover {
+  background: #d04a38;
+  color: #f0d6a5;
+}
+
+/* Deja espacio para la flecha en las páginas de texto. */
+.volver ~ main:not(.diagrama-main):not(.referentes-main) {
+  padding-top: 4.5rem;
 }

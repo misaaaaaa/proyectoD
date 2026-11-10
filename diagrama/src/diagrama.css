@@ -1,13 +1,14 @@
 #diagrama {
   width: 100%;
-  height: calc(100vh - 9rem);
+  height: 100vh;
+  height: 100dvh;
   min-height: 28rem;
   font-family: "Courier New", Courier, monospace;
 }
 
 #diagrama .react-flow {
   --xy-background-color: transparent;
-  --xy-edge-stroke: #462727;
+  --xy-edge-stroke: #d04a38;
   --xy-edge-stroke-width: 2;
   font-family: inherit;
 }
@@ -19,42 +20,61 @@
   justify-content: center;
   text-align: center;
   padding: 1rem;
-  border: 3px solid #462727;
+  border: 3px solid #d04a38;
   border-radius: 50%;
-  background: #e7d399;
-  color: #462727;
-  font-size: 1.25rem;
+  background: #f0d6a5;
+  color: #d04a38;
+  font-size: 1.6rem;
   line-height: 1.15;
   text-decoration: none;
   cursor: pointer;
 }
 
+.burbuja-ovalo {
+  font-family: "Moe Bold", "Moe", sans-serif;
+  border-style: dashed;
+  font-size: 3rem;
+  line-height: 1.05;
+}
+
+.burbuja-centro.burbuja-ovalo {
+  font-size: 3.4rem;
+}
+
 a.burbuja:hover,
 a.burbuja:focus-visible {
-  background: #462727;
-  color: #e7d399;
+  background: #d04a38;
+  color: #f0d6a5;
   outline: none;
 }
 
 .burbuja-centro {
-  background: #462727;
-  color: #e7d399;
-  font-size: 1.75rem;
+  background: #d04a38;
+  color: #f0d6a5;
+  font-size: 2.2rem;
   cursor: grab;
 }
 
 #diagrama-marco {
   width: 100%;
-  height: calc(100vh - 9rem);
+  height: 100vh;
+  height: 100dvh;
   min-height: 28rem;
   font-family: "Courier New", Courier, monospace;
 }
 
 #diagrama-marco .react-flow {
   --xy-background-color: transparent;
-  --xy-edge-stroke: #462727;
+  --xy-edge-stroke: #d04a38;
   --xy-edge-stroke-width: 2;
   font-family: inherit;
+}
+
+#diagrama-marco .burbuja {
+  font-family: "Moe Bold", "Moe", sans-serif;
+  border-style: dotted;
+  font-size: 2.1rem;
+  line-height: 1.05;
 }
 
 .overlay-panel h2 {
@@ -63,16 +83,16 @@ a.burbuja:focus-visible {
 
 button.burbuja:hover,
 button.burbuja:focus-visible {
-  background: #462727;
-  color: #e7d399;
+  background: #d04a38;
+  color: #f0d6a5;
   outline: none;
 }
 
 .arista-texto {
   position: absolute;
   padding: 0.1rem 0.5rem;
-  background: #e7d399;
-  color: #462727;
+  background: #f0d6a5;
+  color: #d04a38;
   font-size: 0.95rem;
   pointer-events: none;
 }
@@ -85,7 +105,7 @@ button.burbuja:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: rgba(70, 39, 39, 0.55);
+  background: rgba(208, 74, 56, 0.15);
 }
 
 .overlay-panel {
@@ -94,9 +114,9 @@ button.burbuja:focus-visible {
   max-height: 85vh;
   overflow: auto;
   padding: 2rem;
-  background: #e7d399;
-  color: #462727;
-  border: 3px solid #462727;
+  background: #f0d6a5;
+  color: #d04a38;
+  border: 3px solid #d04a38;
   border-radius: 1.5rem;
   font-size: 1.125rem;
   line-height: 1.6;
@@ -104,6 +124,8 @@ button.burbuja:focus-visible {
 
 .overlay-panel h2 {
   margin: 0 2.5rem 1rem 0;
+  font-size: 2.1rem;
+  line-height: 1.15;
 }
 
 .overlay-cerrar {
@@ -117,4 +139,68 @@ button.burbuja:focus-visible {
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
+}
+
+/* Referentes: imágenes que se alternan como un gif */
+.referentes-main {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Aviso mientras se precargan las imágenes. */
+.referentes-cargando {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: "Moe Bold", "Moe", sans-serif;
+  font-size: 2.5rem;
+}
+
+/* Ocupa toda la pantalla; la imagen se escala sin recortarse. */
+.referentes-gif {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #f0d6a5;
+  cursor: pointer;
+}
+
+.referentes-gif img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+.referentes-gif:focus-visible {
+  outline: 3px solid #d04a38;
+  outline-offset: -6px;
+}
+
+
+/* Tarjeta de referente: más grande y con poco margen. */
+.overlay:has(.overlay-referente) {
+  padding: 0.75rem;
+}
+
+.overlay-referente {
+  width: min(64rem, 100%);
+  max-height: 96vh;
+  padding: 2.75rem 1.25rem 1rem; /* arriba: espacio para la × */
+}
+
+.overlay-referente img {
+  width: 100%;
+  max-height: 74vh;
+  margin: 0 0 0.75rem;
+  object-fit: contain;
 }
