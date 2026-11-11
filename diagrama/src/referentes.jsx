@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { marked } from "marked";
 
 const MD = "contenido/referentes.md";
-const INTERVALO = 100; // ms que se muestra cada imagen
+const INTERVALO = 100; // ms que se muestra cada imagen en el modo GIF
 
 // Cada "## Título" es un referente: su primera imagen y el texto que la sigue.
 // Las rutas de las imágenes se resuelven relativas al .md (por eso "../").
@@ -36,37 +36,122 @@ function precargar(it) {
     .catch(() => null);
 }
 
-export default function Referentes() {
+// Columnas y filas que llenan la pantalla con celdas de proporción cercana a 4:3,
+// sin dejar demasiadas celdas vacías.
+function grilla(n, w, h) {
+  let mejor = { cols: 1, filas: n, puntaje: Infinity };
+  for (let cols = 1; cols <= n; cols++) {
+    const filas = Math.ceil(n / cols);
+    const proporcion = w / cols / (h / filas);
+    const puntaje =
+      Math.abs(Math.log(proporcion / 1.33)) + ((cols * filas - n) / n) * 0.4;
+    if (puntaje < mejor.puntaje) mejor = { cols, filas, puntaje };
+  }
+  return mejor;
+}
+
+function useTamanoVentana() {
+  const [tam, setTam] = useState({ w: innerWidth, h: innerHeight });
+  useEffect(() => {
+    const onResize = () => setTam({ w: innerWidth, h: innerHeight });
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return tam;
+}
+
+function Tarjeta({ item, onCerrar }) {
+  return (
+    <div className="overlay" onClick={onCerrar}>
+      <article
+        className="overlay-panel overlay-referente"
+        role="dialog"
+        aria-modal="true"
+        aria-label={item.titulo}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className="overlay-cerrar" aria-label="Cerrar" onClick={onCerrar}>
+          ×
+        </button>
+        <img src={item.src} alt={item.alt} />
+        <div dangerouslySetInnerHTML={{ __html: marked.parse(item.texto) }} />
+      </article>
+    </div>
+  );
+}
+
+// Modo GIF: una imagen a pantalla completa que cambia cada INTERVALO ms.
+function Gif({ items, onAbrir, pausado }) {
+  const [actual, setActual] = useState(0);
+  useEffect(() => {
+    if (pausado) return;
+    const id = setInterval(() => setActual((i) => (i + 1) % items.length), INTERVALO);
+    return () => clearInterval(id);
+  }, [items, pausado]);
+  const it = items[actual];
+  return (
+    <button
+      type="button"
+      className="referentes-gif"
+      onClick={() => onAbrir(it)}
+      aria-label={"Ver referente: " + it.titulo}
+    >
+      <img src={it.src} alt={it.alt} />
+    </button>
+  );
+}
+
+// Modo mosaico: todas las imágenes a la vez, llenando la pantalla sin scroll.
+function Mosaico({ items, onAbrir }) {
+  const { w, h } = useTamanoVentana();
+  const { cols, filas } = grilla(items.length, w, h);
+  return (
+    <div
+      className="referentes-mosaico"
+      style={{
+        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${filas}, minmax(0, 1fr))`,
+      }}
+    >
+      {items.map((it) => (
+        <button
+          key={it.src}
+          type="button"
+          onClick={() => onAbrir(it)}
+          aria-label={"Ver referente: " + it.titulo}
+        >
+          <img src={it.src} alt={it.alt} loading="eager" />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export default function Referentes({ modo = "gif" }) {
   const [items, setItems] = useState(null);
   const [progreso, setProgreso] = useState(null); // { listas, total } mientras carga
-  const [actual, setActual] = useState(0);
   const [abierto, setAbierto] = useState(null);
 
   useEffect(() => {
     fetch(MD)
       .then((r) => r.text())
       .then((t) => {
-        // La animación arranca solo cuando todas las imágenes están listas,
-        // para que no aparezcan cuadros vacíos o a medio cargar.
         const lista = parsear(t);
+        // El mosaico muestra las imágenes a medida que llegan.
+        if (modo === "mosaico") return lista;
+        // El GIF arranca solo cuando todas las imágenes están listas,
+        // para que no aparezcan cuadros vacíos o a medio cargar.
         let listas = 0;
         setProgreso({ listas, total: lista.length });
         return Promise.all(
           lista.map((it) =>
             precargar(it).finally(() => setProgreso({ listas: ++listas, total: lista.length }))
           )
-        );
+        ).then((cargados) => cargados.filter(Boolean));
       })
-      .then((cargados) => setItems(cargados.filter(Boolean)))
+      .then(setItems)
       .catch(() => setItems([]));
-  }, []);
-
-  // Avanza la imagen mientras no haya overlay abierto.
-  useEffect(() => {
-    if (!items?.length || abierto) return;
-    const id = setInterval(() => setActual((i) => (i + 1) % items.length), INTERVALO);
-    return () => clearInterval(id);
-  }, [items, abierto]);
+  }, [modo]);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setAbierto(null);
@@ -81,40 +166,15 @@ export default function Referentes() {
       </p>
     );
   if (!items.length) return <p>No se pudieron cargar los referentes.</p>;
-  const it = items[actual];
 
   return (
     <>
-      <button
-        type="button"
-        className="referentes-gif"
-        onClick={() => setAbierto(it)}
-        aria-label={"Ver referente: " + it.titulo}
-      >
-        <img src={it.src} alt={it.alt} />
-      </button>
-      {abierto && (
-        <div className="overlay" onClick={() => setAbierto(null)}>
-          <article
-            className="overlay-panel overlay-referente"
-            role="dialog"
-            aria-modal="true"
-            aria-label={abierto.titulo}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="overlay-cerrar"
-              aria-label="Cerrar"
-              onClick={() => setAbierto(null)}
-            >
-              ×
-            </button>
-            <img src={abierto.src} alt={abierto.alt} />
-            <div dangerouslySetInnerHTML={{ __html: marked.parse(abierto.texto) }} />
-          </article>
-        </div>
+      {modo === "mosaico" ? (
+        <Mosaico items={items} onAbrir={setAbierto} />
+      ) : (
+        <Gif items={items} onAbrir={setAbierto} pausado={!!abierto} />
       )}
+      {abierto && <Tarjeta item={abierto} onCerrar={() => setAbierto(null)} />}
     </>
   );
 }

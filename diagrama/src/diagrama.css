@@ -204,3 +204,72 @@ button.burbuja:focus-visible {
   margin: 0 0 0.75rem;
   object-fit: contain;
 }
+
+/* Referentes en mosaico: todas las imágenes llenan la pantalla, sin scroll. */
+.referentes-mosaico {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  gap: 2px;
+  background: #f0d6a5;
+}
+
+.referentes-mosaico button {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.referentes-mosaico img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+.referentes-mosaico button:hover img {
+  opacity: 0.8;
+}
+
+.referentes-mosaico button:focus-visible {
+  outline: 3px solid #d04a38;
+  outline-offset: -3px;
+}
+
+/* Botón para cambiar entre GIF y mosaico, abajo a la derecha. */
+.cambiar-vista {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  color: #d04a38;
+  background: #f0d6a5;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.cambiar-vista svg {
+  display: block;
+  fill: currentColor;
+}
+
+.cambiar-vista-texto {
+  padding: 0.2rem 0.6rem;
+  font-family: "Moe Bold", "Moe", sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.cambiar-vista:hover {
+  color: #f0d6a5;
+  background: #d04a38;
+}
+

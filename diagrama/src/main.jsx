@@ -14,7 +14,7 @@ const marco = document.getElementById("diagrama-marco");
 if (marco) createRoot(marco).render(<Marco />);
 
 const referentes = document.getElementById("referentes");
-if (referentes) createRoot(referentes).render(<Referentes />);
+if (referentes) createRoot(referentes).render(<Referentes modo={referentes.dataset.modo} />);
 
 const biblio = document.getElementById("biblio");
 if (biblio) createRoot(biblio).render(<Biblio />);

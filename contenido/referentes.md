@@ -1,3 +1,9 @@
+<!--
+Imágenes de referentes (carpeta de Google Drive):
+https://drive.google.com/drive/folders/1F8CgfenQyUOwHTlOWpZnli5U9iEemZzt
+Copiadas a imagenes/referentes/ el 10 de noviembre de 2026.
+-->
+
 ## 01 — Body / Environment
 
 ![Body / Environment](../imagenes-instagram/imagenes/01-body-environment.jpg)
@@ -125,3 +131,135 @@ Nueva York: Wiley. Bloque de Are.na: [are.na/block/3209681](https://www.are.na/b
 *Against Method*, Paul Feyerabend (1975)
 
 Londres: New Left Books.
+
+## Covarrubias 00
+
+![Covarrubias 00](../imagenes/referentes/covarrubias00.jpg)
+
+[info de diagrama por incorporar]
+
+## Barr 01
+
+![Barr 01](../imagenes/referentes/barr01.jpg)
+
+[info de diagrama por incorporar]
+
+## Maciunas 02
+
+![Maciunas 02](../imagenes/referentes/maciunas02.jpg)
+
+[info de diagrama por incorporar]
+
+## Maciunas 03
+
+![Maciunas 03](../imagenes/referentes/maciunas03.jpg)
+
+[info de diagrama por incorporar]
+
+## Hirschhorn 04
+
+![Hirschhorn 04](../imagenes/referentes/hirschhorn04.jpg)
+
+[info de diagrama por incorporar]
+
+## Eisenberg 05
+
+![Eisenberg 05](../imagenes/referentes/eisenberg05.png)
+
+[info de diagrama por incorporar]
+
+## Klint 06
+
+![Klint 06](../imagenes/referentes/klint06.jpg)
+
+[info de diagrama por incorporar]
+
+## Higgins 07
+
+![Higgins 07](../imagenes/referentes/higgins07.jpg)
+
+[info de diagrama por incorporar]
+
+## Higgins 08
+
+![Higgins 08](../imagenes/referentes/higgins08.jpg)
+
+[info de diagrama por incorporar]
+
+## Oliveros 09
+
+![Oliveros 09](../imagenes/referentes/oliveros09.jpg)
+
+[info de diagrama por incorporar]
+
+## Bardehle 10
+
+![Bardehle 10](../imagenes/referentes/bardehle10.jpg)
+
+[info de diagrama por incorporar]
+
+## Orellana 11
+
+![Orellana 11](../imagenes/referentes/orellana11.jpg)
+
+[info de diagrama por incorporar]
+
+## Klee 12
+
+![Klee 12](../imagenes/referentes/klee12.png)
+
+[info de diagrama por incorporar]
+
+## Lombardi 13
+
+![Lombardi 13](../imagenes/referentes/lombardi13.jpg)
+
+[info de diagrama por incorporar]
+
+## Baum 14
+
+![Baum 14](../imagenes/referentes/baum14.jpg)
+
+[info de diagrama por incorporar]
+
+## Ahn 15
+
+![Ahn 15](../imagenes/referentes/ahn15.jpg)
+
+[info de diagrama por incorporar]
+
+## Nin 16
+
+![Nin 16](../imagenes/referentes/nin16.jpg)
+
+[info de diagrama por incorporar]
+
+## Strass 17
+
+![Strass 17](../imagenes/referentes/strass17.jpg)
+
+[info de diagrama por incorporar]
+
+## Miyoshi 17
+
+![Miyoshi 17](../imagenes/referentes/miyoshi17.png)
+
+[info de diagrama por incorporar]
+
+## Marz 18
+
+![Marz 18](../imagenes/referentes/marz18.jpg)
+
+[info de diagrama por incorporar]
+
+## Marz 19
+
+![Marz 19](../imagenes/referentes/marz19.jpg)
+
+[info de diagrama por incorporar]
+
+## Anzaldúa 20
+
+![Anzaldúa 20](../imagenes/referentes/anzaldua20.jpeg)
+
+[info de diagrama por incorporar]
