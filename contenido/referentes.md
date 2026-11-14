@@ -1,7 +1,9 @@
 <!--
 Imágenes de referentes (carpeta de Google Drive):
 https://drive.google.com/drive/folders/1F8CgfenQyUOwHTlOWpZnli5U9iEemZzt
-Copiadas a imagenes/referentes/ el 10 de noviembre de 2026.
+Copiadas a imagenes/referentes/ el 10 de noviembre de 2026; arremangala21 y nicolae24 añadidas el 14 de noviembre de 2026.
+malhumor22, poetrycube, maresca25 y benn26 descargadas desde el Google Doc (no están en Drive).
+Textos: https://docs.google.com/document/d/1IanvUpH2ZdVfKeIRI0DPBFfOE0LND5OIgGLkUMoFvns
 -->
 
 ## 01 — Body / Environment
@@ -132,134 +134,228 @@ Nueva York: Wiley. Bloque de Are.na: [are.na/block/3209681](https://www.are.na/b
 
 Londres: New Left Books.
 
-## Covarrubias 00
+## Árbol del arte moderno
 
-![Covarrubias 00](../imagenes/referentes/covarrubias00.jpg)
+![Árbol del arte moderno](../imagenes/referentes/covarrubias00.jpg)
 
-[info de diagrama por incorporar]
+*The Tree of Modern Art—Planted 60 Years Ago*, Miguel Covarrubias (1933)
 
-## Barr 01
+Covarrubias, M. (1933, mayo). The tree of modern art—planted 60 years ago [Ilustración]. *Vanity Fair, 40*(3), 36–37. [moma.org](https://www.moma.org/momaorg/shared/pdfs/docs/archives/InventingAbstraction_GLowry_359_363.pdf)
 
-![Barr 01](../imagenes/referentes/barr01.jpg)
+## Cubismo y arte abstracto
 
-[info de diagrama por incorporar]
+![Cubismo y arte abstracto](../imagenes/referentes/barr01.jpg)
 
-## Maciunas 02
+*Cubism and Abstract Art*, Alfred H. Barr Jr. (1936)
 
-![Maciunas 02](../imagenes/referentes/maciunas02.jpg)
+Barr, A. H., Jr. (1936). *Cubism and abstract art* [Catálogo de exposición; diagrama en la sobrecubierta]. The Museum of Modern Art. [moma.org](https://www.moma.org/calendar/exhibitions/2748)
 
-[info de diagrama por incorporar]
+## Boceto para una historia de Fluxus
 
-## Maciunas 03
+![Boceto para una historia de Fluxus](../imagenes/referentes/maciunas02.jpg)
 
-![Maciunas 03](../imagenes/referentes/maciunas03.jpg)
+*Rough Sketch for Chart*, George Maciunas (s. f.)
 
-[info de diagrama por incorporar]
+Maciunas, G. (s. f.). *Rough sketch for chart* [Boceto manuscrito]. The Gilbert and Lila Silverman Fluxus Collection Archives, The Museum of Modern Art. [moma.org](https://www.moma.org/interactives/exhibitions/2013/charting_fluxus/)
 
-## Hirschhorn 04
+## Diagrama de las artes expandidas
 
-![Hirschhorn 04](../imagenes/referentes/hirschhorn04.jpg)
+![Diagrama de las artes expandidas](../imagenes/referentes/maciunas03.jpg)
 
-[info de diagrama por incorporar]
+*Expanded Arts Diagram*, George Maciunas (1966)
 
-## Eisenberg 05
+Maciunas, G. (1966). *Expanded arts diagram* [Litografía ófset]. The Museum of Modern Art. [moma.org](https://www.moma.org/collection/works/128225)
 
-![Eisenberg 05](../imagenes/referentes/eisenberg05.png)
+## El arte como movimiento
 
-[info de diagrama por incorporar]
+![El arte como movimiento](../imagenes/referentes/hirschhorn04.jpg)
 
-## Klint 06
+*Schema: Art as Movement*, Thomas Hirschhorn (2025)
 
-![Klint 06](../imagenes/referentes/klint06.jpg)
+Hirschhorn, T. (2025). *Schema: Art as movement* [Diagrama]. [thomashirschhorn.com](https://www.thomashirschhorn.com/maps-schemas/)
 
-[info de diagrama por incorporar]
+## Árbol de la vida
 
-## Higgins 07
+![Árbol de la vida](../imagenes/referentes/eisenberg05.png)
 
-![Higgins 07](../imagenes/referentes/higgins07.jpg)
+*Árbol de la vida de Evogeneao*, Leonard Eisenberg (2017; versión de un diseño de 2008)
 
-[info de diagrama por incorporar]
+Eisenberg, L. (2017). *Árbol de la vida* [Diagrama, versión en español]. Evogeneao. [evogeneao.com](https://www.evogeneao.com/es/explore/tree-of-life-translations)
 
-## Higgins 08
+## Estudios sobre flores, musgos y líquenes
 
-![Higgins 08](../imagenes/referentes/higgins08.jpg)
+![Estudios sobre flores, musgos y líquenes](../imagenes/referentes/klint06.jpg)
 
-[info de diagrama por incorporar]
+*From A Work on Flowers, Mosses and Lichen*, Hilma af Klint (1919)
 
-## Oliveros 09
+af Klint, H. (1919). *From A Work on Flowers, Mosses and Lichen* [Páginas de cuaderno]. Moderna Museet. [modernamuseet.se](https://www.modernamuseet.se/en/stockholm/exhibitions/hilma-af-klint-2013/symbols/)
 
-![Oliveros 09](../imagenes/referentes/oliveros09.jpg)
+## Cinco tradiciones de la historia del arte
 
-[info de diagrama por incorporar]
+![Cinco tradiciones de la historia del arte](../imagenes/referentes/higgins07.jpg)
 
-## Bardehle 10
+*Five Traditions of Art History, an Essay*, Dick Higgins (1976)
 
-![Bardehle 10](../imagenes/referentes/bardehle10.jpg)
+Higgins, D. (1976). *Five traditions of art history, an essay* [Diagrama e impresión ófset]. Walker Art Center. [walkerart.org](https://www.walkerart.org/collections/artwork/five-traditions-of-art-history-an-essay-by-dick-higgins/)
 
-[info de diagrama por incorporar]
+## Diagrama de intermedia
 
-## Orellana 11
+![Diagrama de intermedia](../imagenes/referentes/higgins08.jpg)
 
-![Orellana 11](../imagenes/referentes/orellana11.jpg)
+*Intermedia Chart*, Dick Higgins (1995)
 
-[info de diagrama por incorporar]
+Higgins, D. (1995). *Intermedia chart* [Diagrama]. Fondazione Bonotto. [fondazionebonotto.org](https://www.fondazionebonotto.org/en/collection/fluxus/higginsdick/983.html)
 
-## Klee 12
+## Escuchar
 
-![Klee 12](../imagenes/referentes/klee12.png)
+![Escuchar](../imagenes/referentes/oliveros09.jpg)
 
-[info de diagrama por incorporar]
+*Wind Horse Mandala*, Pauline Oliveros (1994)
 
-## Lombardi 13
+Oliveros, P. (with Pertl, B.). (2013). *Anthology of text scores* (S. Golter & L. Hall, Eds.). Deep Listening Publications.
 
-![Lombardi 13](../imagenes/referentes/lombardi13.jpg)
+## Unión de mapas de trayectorias teatrales
 
-[info de diagrama por incorporar]
+![Unión de mapas de trayectorias teatrales](../imagenes/referentes/bardehle10.jpg)
 
-## Baum 14
+*Imagen unión de mapas*, Camila Bardehle (2022)
 
-![Baum 14](../imagenes/referentes/baum14.jpg)
+Bardehle, C. (2022, septiembre). *Imagen unión de mapas* [Composición gráfica]. ARDE, Archivos de Arte. [proyectoarde.org](https://proyectoarde.org/items/show/6863)
 
-[info de diagrama por incorporar]
+La composición reúne dibujos de directores teatrales sobre sus trayectorias.
 
-## Ahn 15
+## Mapa de la trayectoria de Ernesto Orellana
 
-![Ahn 15](../imagenes/referentes/ahn15.jpg)
+![Mapa de la trayectoria de Ernesto Orellana](../imagenes/referentes/orellana11.jpg)
 
-[info de diagrama por incorporar]
+*Mapa de Ernesto Orellana*, Ernesto Orellana (s. f.)
 
-## Nin 16
+Orellana, E. (s. f.). *Mapa de Ernesto Orellana* [Dibujo]. Colección Escenas de lo político: cartografía del teatro político chileno contemporáneo, ARDE, Archivos de Arte. [proyectoarde.org](https://proyectoarde.org/mapas-y-diagramas-para-cartografiar-teatro/)
 
-![Nin 16](../imagenes/referentes/nin16.jpg)
+## Caminos del estudio de la naturaleza
 
-[info de diagrama por incorporar]
+![Caminos del estudio de la naturaleza](../imagenes/referentes/klee12.png)
 
-## Strass 17
+*Wege des Naturstudiums* (Caminos del estudio de la naturaleza), Paul Klee (1923)
 
-![Strass 17](../imagenes/referentes/strass17.jpg)
+Klee, P. (1923). Wege des Naturstudiums. En *Staatliches Bauhaus in Weimar 1919–1923*. Bauhausverlag.
 
-[info de diagrama por incorporar]
+## Red de Industrias Carlos Cardoen
 
-## Miyoshi 17
+![Red de Industrias Carlos Cardoen](../imagenes/referentes/lombardi13.jpg)
 
-![Miyoshi 17](../imagenes/referentes/miyoshi17.png)
+*Industrias Carlos Cardoen of Santiago, Chile, 1982–90, 2nd Version*, Mark Lombardi (2000)
 
-[info de diagrama por incorporar]
+Lombardi, M. (2000). *Industrias Carlos Cardoen of Santiago, Chile, 1982–90 (2nd version)* [Dibujo a lápiz]. En *Mark Lombardi* [Material de exposición]. University Art Museum, University at Albany. [universityartmuseum.org](https://archive.universityartmuseum.org/images/PDF/20010124.pdf)
 
-## Marz 18
+## Differently
 
-![Marz 18](../imagenes/referentes/marz18.jpg)
+![Differently](../imagenes/referentes/baum14.jpg)
 
-[info de diagrama por incorporar]
+*Differently*, de la serie *Dog Ear*, Erica Baum (2009)
 
-## Marz 19
+Baum, E. (2009). *Differently* [Impresión de inyección de tinta, serie Dog Ear]. George Eastman Museum. [eastman.org](https://www.eastman.org/erica-baum-bite-ribbon-paper-show)
 
-![Marz 19](../imagenes/referentes/marz19.jpg)
+## Autorretrato
 
-[info de diagrama por incorporar]
+![Autorretrato](../imagenes/referentes/ahn15.jpg)
 
-## Anzaldúa 20
+*Self-Portrait*, Minjeong An (2007)
 
-![Anzaldúa 20](../imagenes/referentes/anzaldua20.jpeg)
+An, M. (2007). *Self-portrait* [Impresión digital]. [myartda.com](https://www.myartda.com/current/c_01.html)
 
-[info de diagrama por incorporar]
+## Mapa de relaciones de Anaïs Nin en Nueva York
+
+![Mapa de relaciones de Anaïs Nin en Nueva York](../imagenes/referentes/nin16.jpg)
+
+*New York*, Anaïs Nin (1974)
+
+Snyder, R. (1976). *Anaïs Nin observed: From a film portrait of a woman as artist*. Swallow Press.
+
+## Der Strom der Zeiten
+
+![Der Strom der Zeiten](../imagenes/referentes/strass17.jpg)
+
+*Der Strom der Zeiten*, Friedrich Strass (1803)
+
+C. Smith & Son. (1849). *Stream of time or chart of universal history from the German of Strass* [Carta cronológica]. C. Smith. David Rumsey Historical Map Collection. [davidrumsey.com](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~317017~90085925:Stream-of-time-or-chart-of-universa)
+
+## Artist Statement
+
+![Artist Statement](../imagenes/referentes/miyoshi17.png)
+
+*Artist Statement*, Akihiko Miyoshi (2004)
+
+Miyoshi, A. (2004). *Artist statement* [Diagrama]. Reed College. [people.reed.edu](https://people.reed.edu/~miyos/artist_statement.pdf)
+
+## Mapa contra la moneda colonial
+
+![Mapa contra la moneda colonial](../imagenes/referentes/marz18.jpg)
+
+*Map Against Colonial Currency*, Moses März (2026)
+
+März, M. (2026). *Map against colonial currency* [Mapa-diagrama]. Research Catalogue. [researchcatalogue.net](https://www.researchcatalogue.net/view/3861725/4815661)
+
+## Mapa contra la amnesia colonial
+
+![Mapa contra la amnesia colonial](../imagenes/referentes/marz19.jpg)
+
+*Map Against Colonial Amnesia I*, Moses März (2023)
+
+März, M. (2024, 13 de junio). Maps against colonial amnesia. *The Funambulist*. [thefunambulist.net](https://thefunambulist.net/magazine/colonial-continuums/map-against-colonial-amnesia-i)
+
+## El cenote
+
+![El cenote](../imagenes/referentes/anzaldua20.jpeg)
+
+*El cenote*, Gloria E. Anzaldúa (s. f.; reproducido en publicaciones póstumas)
+
+Anzaldúa, G. E. (2015). *Light in the dark/Luz en lo oscuro: Rewriting identity, spirituality, reality* (A. Keating, Ed.). Duke University Press. [dukeupress.edu](https://www.dukeupress.edu/light-in-the-dark-luz-en-lo-oscuro)
+
+## Arremángala, arrempújala — Los Karkik's
+
+![Arremángala, arrempújala — Los Karkik's](../imagenes/referentes/arremangala21.jpeg)
+
+*Diagrama de la canción Arremángala, Arrempújala*, @detektivee (2026)
+
+@detektivee. (2026, 10 de octubre). [Fotografía]. Instagram. [instagram.com/p/Dfh7k11xuut](https://www.instagram.com/p/Dfh7k11xuut/)
+
+## Mal humor
+
+![Mal humor](../imagenes/referentes/malhumor22.jpeg)
+
+*Sin nombre*, @malhumor_st (2026)
+
+@malhumor_st. (2026, 21 de octubre). [Ilustración]. Instagram. [instagram.com/p/DewzsrVpjrk](https://www.instagram.com/p/DewzsrVpjrk/)
+
+## Coincidence Poetry Cube
+
+![Coincidence Poetry Cube](../imagenes/referentes/poetrycube.jpeg)
+
+*Coincidence Poetry Cube*, DDBBMM (s. f.)
+
+DDBBMM, Corea.
+
+## Desire / Fate
+
+![Desire / Fate](../imagenes/referentes/nicolae24.jpg)
+
+*Desire / Fate*, Rina Nicolae (2026)
+
+@chthonic_youth. (2026, 14 de septiembre). [Diagramas *Fig 1. Desire* y *Fig 2. Fate*] [Ilustración]. Instagram. [instagram.com/p/DdRpmftjKe_](https://www.instagram.com/p/DdRpmftjKe_/?img_index=1)
+
+## Decálogo del artista (centálogo)
+
+![Decálogo del artista (centálogo)](../imagenes/referentes/maresca25.jpeg)
+
+*Decálogo del artista (centálogo)*, Liliana Maresca (1994)
+
+Maresca, L. (1994). *Decálogo del artista (centálogo)* [Dibujo]. Archivo Liliana Maresca, Buenos Aires, Argentina. [galeriavasari.com.ar](https://galeriavasari.com.ar/muestra_obra/liliana-maresca-floreceran-pajaros/decalogo-del-artista-centalogo/1381)
+
+## Diagram of a Night’s Sleep
+
+![Diagram of a Night’s Sleep](../imagenes/referentes/benn26.jpeg)
+
+*Diagram of a Night’s Sleep*, Katie Benn (2026)
+
+Benn, K. (2026). *Diagram of a Night’s Sleep* [Dibujo]. Instagram. [instagram.com/p/DdP8NRYpETa](https://www.instagram.com/p/DdP8NRYpETa/)
