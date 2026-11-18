@@ -3,6 +3,7 @@ Imágenes de referentes (carpeta de Google Drive):
 https://drive.google.com/drive/folders/1F8CgfenQyUOwHTlOWpZnli5U9iEemZzt
 Copiadas a imagenes/referentes/ el 10 de noviembre de 2026; arremangala21 y nicolae24 añadidas el 14 de noviembre de 2026.
 malhumor22, poetrycube, maresca25 y benn26 descargadas desde el Google Doc (no están en Drive).
+aranguiz27, serranoymontoya28, denes29, clark30, vent31, zegers32, gonzalez33 y gonzalez34 descargadas desde el Google Doc el 18 de noviembre de 2026.
 Textos: https://docs.google.com/document/d/1IanvUpH2ZdVfKeIRI0DPBFfOE0LND5OIgGLkUMoFvns
 -->
 
@@ -359,3 +360,67 @@ Maresca, L. (1994). *Decálogo del artista (centálogo)* [Dibujo]. Archivo Lilia
 *Diagram of a Night’s Sleep*, Katie Benn (2026)
 
 Benn, K. (2026). *Diagram of a Night’s Sleep* [Dibujo]. Instagram. [instagram.com/p/DdP8NRYpETa](https://www.instagram.com/p/DdP8NRYpETa/)
+
+## Publicar como práctica medial
+
+![Publicar como práctica medial](../imagenes/referentes/aranguiz27.jpg)
+
+*Publicar como práctica medial*, Fernanda Aránguiz (2026)
+
+Enviado por la autora.
+
+## Diagrama de flujos/completos
+
+![Diagrama de flujos/completos](../imagenes/referentes/serranoymontoya28.jpeg)
+
+*Diagrama para explicar flujos en electrónica a través del completo*, Matías Serrano y Aarón Montoya-Moraga (2026)
+
+Curso de máquinas computacionales, UDP. Compartido por lxs autores.
+
+## The Human Hang-up Machine
+
+![The Human Hang-up Machine](../imagenes/referentes/denes29.jpeg)
+
+*The Human Hang-up Machine*, Agnes Denes (1969)
+
+Denes, A. (1969). *The human hang-up machine* [Tinta china sobre papel milimetrado naranja, 28 × 42 cm]. Agnes Denes Studio. [agnesdenesstudio.com](http://www.agnesdenesstudio.com/works3_11_popup.html)
+
+## Caminhando
+
+![Caminhando](../imagenes/referentes/clark30.jpeg)
+
+*Caminhando*, Lygia Clark (1963)
+
+Clark, L. (1963). *Caminhando* [Proposición participativa; papel, pegamento y tijeras]. Associação Cultural "O Mundo de Lygia Clark", Río de Janeiro, Brasil. [lygiaclark.org.br](https://portal.lygiaclark.org.br/acervo/189/caminhando)
+
+## Vent Diagrams
+
+![Vent Diagrams](../imagenes/referentes/vent31.jpg)
+
+*Trump’s presidency will accelerate the Israeli gov’s impunity / Trump’s presidency will accelerate antisemitism*, E.M. (Elana Eisen-Markowitz) y Rachel Schragis (s. f.)
+
+Eisen-Markowitz, E. M., y Schragis, R. (s. f.). *Trump’s presidency will accelerate the Israeli gov’s impunity / Trump’s presidency will accelerate antisemitism* [Diagrama de Venn]. [ventdiagrams.com](https://www.ventdiagrams.com/)
+
+## Diagrams
+
+![Diagrams](../imagenes/referentes/zegers32.png)
+
+*Diagrams*, augustine zegers (2022)
+
+Zegers, A. (2022, 20 de febrero). *Diagrams* [Diagrama digital]. Syllabus. [syllabusproject.org](https://syllabusproject.org/diagrams/)
+
+## Torta editorial
+
+![Torta editorial](../imagenes/referentes/gonzalez33.jpg)
+
+*Torta editorial*, Camila González Simon / HAMBRE (s. f.)
+
+Facilitado por la autora.
+
+## Donna Haraway
+
+![Donna Haraway](../imagenes/referentes/gonzalez34.jpg)
+
+*Diagrama sobre Donna Haraway*, Camila González (2026)
+
+Facilitado por la autora.
