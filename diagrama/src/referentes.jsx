@@ -26,6 +26,17 @@ function parsear(md) {
     .filter(Boolean);
 }
 
+// Devuelve una copia en orden aleatorio (Fisher–Yates): cada carga de la página
+// muestra los referentes en un orden distinto.
+function barajar(lista) {
+  const a = [...lista];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 // Carga y decodifica una imagen. Resuelve con el item, o con null si falla.
 function precargar(it) {
   const img = new Image();
@@ -136,7 +147,7 @@ export default function Referentes({ modo = "gif" }) {
     fetch(MD)
       .then((r) => r.text())
       .then((t) => {
-        const lista = parsear(t);
+        const lista = barajar(parsear(t));
         // El mosaico muestra las imágenes a medida que llegan.
         if (modo === "mosaico") return lista;
         // El GIF arranca solo cuando todas las imágenes están listas,
