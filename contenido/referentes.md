@@ -424,3 +424,11 @@ Facilitado por la autora.
 *Diagrama sobre Donna Haraway*, Camila González (2026)
 
 Facilitado por la autora.
+
+## Cardiología geométrica
+
+![Cardiología geométrica](../imagenes/referentes/torrent35.png)
+
+Cardiología geométrica, Dr. Francisco Torrent-Guasp
+
+Cosín Aguilar, J. (2005). Francisco Torrent-Guasp (1931-2005). *Revista Española de Cardiología, 58*(6), 759-760. [doi.org](https://doi.org/10.1157/13076427)
