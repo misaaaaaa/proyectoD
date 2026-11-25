@@ -113,7 +113,7 @@ Los nombres deben coincidir con el título de un `##`; no importan mayúsculas n
 
 ### Imágenes de ensayos
 
-`ensayos.html` muestra un mosaico con todas las imágenes de la [carpeta de Drive de ensayos](https://drive.google.com/drive/folders/1yYJf2z1NUmC-VdI_B7qYFNOf2jar006a) (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
+`ensayos.html` muestra un mosaico con todas las imágenes de la carpeta de ensayos en Drive (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
 
 Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de ensayos desde Google Drive" corre sola todos los días (y también a mano desde la pestaña Actions). Usa `scripts/sync_ensayos.py`, que:
 
