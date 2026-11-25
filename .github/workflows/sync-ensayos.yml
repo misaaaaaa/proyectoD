@@ -1,11 +1,8 @@
 name: Actualizar imágenes de ensayos desde Google Drive
 
-# Corre solo todos los días, y también a mano:
-# pestaña Actions → "Actualizar imágenes de ensayos desde Google Drive" → Run workflow.
+# Se corre a mano: pestaña Actions → "Actualizar imágenes de ensayos desde Google Drive" → Run workflow.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 9 * * *" # 6:00 en Chile (hora de verano)
 
 permissions:
   contents: write

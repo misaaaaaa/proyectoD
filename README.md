@@ -115,7 +115,7 @@ Los nombres deben coincidir con el título de un `##`; no importan mayúsculas n
 
 `ensayos.html` muestra un mosaico con todas las imágenes de la carpeta de ensayos en Drive (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
 
-Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de ensayos desde Google Drive" corre sola todos los días (y también a mano desde la pestaña Actions). Usa `scripts/sync_ensayos.py`, que:
+Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de ensayos desde Google Drive" se corre a mano desde la pestaña Actions → Run workflow. Usa `scripts/sync_ensayos.py`, que:
 
 - baja las imágenes nuevas y borra las que ya no están en Drive;
 - guarda dos versiones livianas en WebP: `imagenes/ensayos/mini/` (mosaico) e `imagenes/ensayos/grande/` (ampliada);
