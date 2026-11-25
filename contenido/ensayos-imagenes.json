@@ -1,0 +1,162 @@
+[
+ {
+  "id": "1BABrKnObxtkOTC2NfDivwGoLBgyzy-og",
+  "nombre": "astronomia.jpg",
+  "mini": "imagenes/ensayos/mini/astronomia.webp",
+  "w": 580,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/astronomia.webp"
+ },
+ {
+  "id": "1jweQpZtsAAPPccP_ttPQpKllZHD1Hdvk",
+  "nombre": "diagrama_manuscrito_fiel_circular_v4.png",
+  "mini": "imagenes/ensayos/mini/diagrama_manuscrito_fiel_circular_v4.webp",
+  "w": 700,
+  "h": 676,
+  "grande": "imagenes/ensayos/grande/diagrama_manuscrito_fiel_circular_v4.webp"
+ },
+ {
+  "id": "1wSHlxCUWdpbEyfBIhUlCOBCTec4CBEti",
+  "nombre": "peso.jpg",
+  "mini": "imagenes/ensayos/mini/peso.webp",
+  "w": 541,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/peso.webp"
+ },
+ {
+  "id": "12FLvyH3r5KklrCwkgKU9uZDdzatpy430",
+  "nombre": "sin_fondo/curva_francesa.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/curva_francesa.webp",
+  "w": 277,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/curva_francesa.webp"
+ },
+ {
+  "id": "1DbpkZgFIHj70Sx-OxQ-2Eiqw4aLlvoRK",
+  "nombre": "sin_fondo/curva_francesa_doble.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/curva_francesa_doble.webp",
+  "w": 416,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/curva_francesa_doble.webp"
+ },
+ {
+  "id": "1A-EMUCHQdHLhaC8OqNfQqQvC91VdejoC",
+  "nombre": "sin_fondo/piezas_azules.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/piezas_azules.webp",
+  "w": 501,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/piezas_azules.webp"
+ },
+ {
+  "id": "1A9DWmy6sf3xJHad1Rs28sedt3u6P5UaJ",
+  "nombre": "sin_fondo/piezas_blancas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/piezas_blancas.webp",
+  "w": 602,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/piezas_blancas.webp"
+ },
+ {
+  "id": "1Z63YNKAE_yZ0YmfSvbCK399UO1b1S5sc",
+  "nombre": "sin_fondo/piezas_naranjas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/piezas_naranjas.webp",
+  "w": 700,
+  "h": 498,
+  "grande": "imagenes/ensayos/grande/sin_fondo/piezas_naranjas.webp"
+ },
+ {
+  "id": "1YVi-eYUCw-zP09Npyi_Qdoizw58NLY1r",
+  "nombre": "sin_fondo/piezas_sueltas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/piezas_sueltas.webp",
+  "w": 700,
+  "h": 567,
+  "grande": "imagenes/ensayos/grande/sin_fondo/piezas_sueltas.webp"
+ },
+ {
+  "id": "1MYIcTMlz0-j5sZyfxvpSmMNqjYdZJ_Kc",
+  "nombre": "sin_fondo/plantilla_azul_formas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_azul_formas.webp",
+  "w": 423,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_azul_formas.webp"
+ },
+ {
+  "id": "1m8O94oeCwUHALADR2ykof7el-e0Js-z4",
+  "nombre": "sin_fondo/plantilla_circulos_grandes.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_circulos_grandes.webp",
+  "w": 365,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_circulos_grandes.webp"
+ },
+ {
+  "id": "1AxccQbpZmfKFEo2hFFQppdLT9o8O-M7E",
+  "nombre": "sin_fondo/plantilla_electrica.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_electrica.webp",
+  "w": 389,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_electrica.webp"
+ },
+ {
+  "id": "1IhO9Im4Ge1ek_HGO4q1pc9RBTJ28aDUY",
+  "nombre": "sin_fondo/plantilla_elipses_grande.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_elipses_grande.webp",
+  "w": 425,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_elipses_grande.webp"
+ },
+ {
+  "id": "13mriFhASrDVBByV9muimP6p4KhnVJu51",
+  "nombre": "sin_fondo/plantilla_elipses_poligonos.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_elipses_poligonos.webp",
+  "w": 374,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_elipses_poligonos.webp"
+ },
+ {
+  "id": "1wJvMUAp_5Wms04Yzvrl-3_J3TXYSEQcX",
+  "nombre": "sin_fondo/plantilla_figuras_geometricas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_figuras_geometricas.webp",
+  "w": 294,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_figuras_geometricas.webp"
+ },
+ {
+  "id": "18LiULMb2MkLzZtIoW1k_Duq9JPvu5FjA",
+  "nombre": "sin_fondo/plantilla_matematica.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_matematica.webp",
+  "w": 434,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_matematica.webp"
+ },
+ {
+  "id": "1O3i1ZXRPEZultsfTs242RP-jfJUP2OYf",
+  "nombre": "sin_fondo/plantilla_naranja_flechas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_naranja_flechas.webp",
+  "w": 429,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_naranja_flechas.webp"
+ },
+ {
+  "id": "1V-b8Hi_UBU8M3r9pZ2YZ_eFgxk_gzHUC",
+  "nombre": "sin_fondo/plantilla_naranja_formas.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_naranja_formas.webp",
+  "w": 417,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_naranja_formas.webp"
+ },
+ {
+  "id": "1PDySrxDRHSc6u5_FevKJs2McxZu76-ZC",
+  "nombre": "sin_fondo/plantilla_naranja_s.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_naranja_s.webp",
+  "w": 321,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_naranja_s.webp"
+ },
+ {
+  "id": "1chRCTuHPpu48iwIdGQu3gmUIGb7qTut2",
+  "nombre": "sin_fondo/plantilla_simbolos.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/plantilla_simbolos.webp",
+  "w": 355,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_simbolos.webp"
+ }
+]
