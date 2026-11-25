@@ -14,6 +14,7 @@ concurrency:
 
 jobs:
   sync:
+    if: github.repository == 'molibia/proyectoD' # solo en el repo principal, no en forks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -54,6 +55,6 @@ jobs:
             cat salida.txt 2>/dev/null || echo "(el script falló, revisa el paso anterior)"
             echo '```'
             if [ "${{ steps.commit.outputs.cambios }}" = "si" ]; then
-              echo "Los cambios se publicarán en https://misaaaaaa.github.io/proyectoD/referentes.html en uno o dos minutos."
+              echo "Los cambios se publicarán en https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/referentes.html en uno o dos minutos."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
