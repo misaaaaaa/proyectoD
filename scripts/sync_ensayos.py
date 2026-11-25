@@ -19,7 +19,7 @@ ensayos-imagenes.json para forzar que se baje de nuevo.
 La carpeta debe estar compartida como "cualquier persona con el enlace".
 Requiere Pillow:  pip install Pillow
 
-Uso:  python3 scripts/sync_ensayos.py [--dry-run]
+Uso:  CARPETA_ID=<id de la carpeta> python3 scripts/sync_ensayos.py [--dry-run]
 """
 
 import html
@@ -35,7 +35,9 @@ from PIL import Image, ImageOps
 
 Image.MAX_IMAGE_PIXELS = None  # hay escaneos de más de 100 megapíxeles
 
-CARPETA_ID = os.environ.get("CARPETA_ID", "1yYJf2z1NUmC-VdI_B7qYFNOf2jar006a")
+# El ID de la carpeta no se guarda en el repo: viene del secret CARPETA_ID
+# en GitHub Actions, o de la variable de entorno al correrlo a mano.
+CARPETA_ID = os.environ.get("CARPETA_ID", "").strip()
 
 RAIZ = Path(__file__).resolve().parent.parent
 IMGS = RAIZ / "imagenes" / "ensayos"
@@ -81,6 +83,8 @@ def descargar(file_id: str) -> Image.Image:
 
 def main():
     dry = "--dry-run" in sys.argv
+    if not CARPETA_ID:
+        sys.exit("Falta CARPETA_ID (el ID de la carpeta de Drive). En GitHub va como secret del repo.")
     remotos = listar(CARPETA_ID)
     print(f"{len(remotos)} imagen(es) en Drive.")
 
