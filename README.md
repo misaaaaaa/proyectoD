@@ -111,6 +111,18 @@ Se construye desde `contenido/metodologia.md`:
 
 Los nombres deben coincidir con el título de un `##`; no importan mayúsculas ni tildes. Una burbuja puede tener tantas conexiones como se quiera. Si un nombre no existe, la línea se ignora y el aviso aparece en la consola del navegador.
 
+### Imágenes de ensayos
+
+`ensayos.html` muestra un mosaico con todas las imágenes de la [carpeta de Drive de ensayos](https://drive.google.com/drive/folders/1yYJf2z1NUmC-VdI_B7qYFNOf2jar006a) (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
+
+Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de ensayos desde Google Drive" corre sola todos los días (y también a mano desde la pestaña Actions). Usa `scripts/sync_ensayos.py`, que:
+
+- baja las imágenes nuevas y borra las que ya no están en Drive;
+- guarda dos versiones livianas en WebP: `imagenes/ensayos/mini/` (mosaico) e `imagenes/ensayos/grande/` (ampliada);
+- escribe `contenido/ensayos-imagenes.json`, que es lo que lee la página.
+
+La carpeta debe seguir compartida como "cualquier persona con el enlace". Para correrlo en tu computador: `pip install Pillow` y luego `python3 scripts/sync_ensayos.py`.
+
 ### Tipografías
 
 - **Moe** (`typos/moe.otf`): títulos, menú y burbujas.

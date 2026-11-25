@@ -5,12 +5,273 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ensayos</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .mosaico-main {
+      max-width: none;
+      padding: 0;
+    }
+
+    /* Las posiciones las calcula el script: filas justificadas que
+       respetan la proporción de cada imagen y llenan la pantalla. */
+    .mosaico {
+      position: relative;
+      margin: 0 auto;
+    }
+    .mosaico button {
+      position: absolute;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .mosaico button:hover { transform: scale(1.03); z-index: 1; }
+    .mosaico button:focus-visible {
+      outline: 3px solid var(--negro);
+      outline-offset: 2px;
+    }
+    .mosaico img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Imagen ampliada */
+    .ampliada {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background: rgba(240, 214, 165, 0);
+      cursor: zoom-out;
+      transition: background 0.3s;
+    }
+    .ampliada.abierta { background: rgba(240, 214, 165, 0.94); }
+    .ampliada[hidden] { display: none; }
+    .ampliada img {
+      position: absolute;
+      margin: 0;
+      max-width: none;
+      transform-origin: 0 0;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+  </style>
 </head>
 <body>
   <a class="volver" href="index.html" aria-label="Volver al inicio">←</a>
-  <main>
-    <h1>Ensayos</h1>
-    <p>Aquí irán los ensayos.</p>
+  <main class="mosaico-main">
+    <h1 class="visually-hidden">Ensayos</h1>
+    <div class="mosaico" id="mosaico"></div>
   </main>
+
+  <div class="ampliada" id="ampliada" hidden role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <img alt="">
+  </div>
+
+  <script>
+  (() => {
+    const GAP = 6;         // espacio entre imágenes (px)
+    const MARGEN = 6;      // borde alrededor del mosaico (px)
+    const mosaico = document.getElementById("mosaico");
+    let imagenes = [];
+    let botones = [];
+
+    fetch("contenido/ensayos-imagenes.json")
+      .then((r) => r.json())
+      .then((lista) => {
+        imagenes = lista;
+        botones = lista.map((im, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.setAttribute("aria-label", "Ampliar imagen " + (i + 1));
+          const img = document.createElement("img");
+          img.src = im.mini;
+          img.alt = "";
+          img.loading = "lazy";
+          b.append(img);
+          b.addEventListener("click", () => abrir(i));
+          mosaico.append(b);
+          return b;
+        });
+        maquetar();
+      });
+
+    // ---- Mosaico de filas justificadas ----
+    // Reparte las imágenes (en orden) en k filas lo más parejas posible.
+    function particionar(asp, k) {
+      const n = asp.length;
+      const acum = [0];
+      for (const a of asp) acum.push(acum[acum.length - 1] + a);
+      const ideal = acum[n] / k;
+      const costo = (i, j) => (acum[j] - acum[i] - ideal) ** 2;
+      // mejor[f][j]: costo mínimo poniendo las primeras j imágenes en f filas
+      const mejor = Array.from({ length: k + 1 }, () => new Array(n + 1).fill(Infinity));
+      const corte = Array.from({ length: k + 1 }, () => new Array(n + 1).fill(0));
+      mejor[0][0] = 0;
+      for (let f = 1; f <= k; f++) {
+        for (let j = f; j <= n; j++) {
+          for (let i = f - 1; i < j; i++) {
+            const c = mejor[f - 1][i] + costo(i, j);
+            if (c < mejor[f][j]) { mejor[f][j] = c; corte[f][j] = i; }
+          }
+        }
+      }
+      const filas = [];
+      for (let f = k, j = n; f > 0; f--) {
+        const i = corte[f][j];
+        filas.unshift([i, j]);
+        j = i;
+      }
+      return filas;
+    }
+
+    function alturas(asp, filas, ancho) {
+      return filas.map(([i, j]) => {
+        let s = 0;
+        for (let x = i; x < j; x++) s += asp[x];
+        return (ancho - GAP * (j - i - 1)) / s;
+      });
+    }
+
+    function maquetar() {
+      if (!imagenes.length) return;
+      const ancho = document.documentElement.clientWidth - MARGEN * 2;
+      const alto = innerHeight - MARGEN * 2;
+      const minFila = Math.max(70, Math.min(160, innerHeight / 6));
+      const asp = imagenes.map((im) => im.w / im.h);
+
+      // Probar 1..n filas y quedarse con la que más se acerca a llenar la
+      // pantalla sin que ninguna fila quede demasiado baja.
+      // Más filas = filas más altas = mosaico más alto.
+      let elegido = null, ultimo = null;
+      for (let k = 1; k <= asp.length; k++) {
+        const filas = particionar(asp, k);
+        const hs = alturas(asp, filas, ancho);
+        const total = hs.reduce((s, h) => s + h, 0) + GAP * (k - 1);
+        ultimo = { filas, hs, total };
+        if (Math.min(...hs) < minFila) continue;
+        ultimo.dif = Math.abs(total - alto);
+        if (!elegido || ultimo.dif < elegido.dif) elegido = ultimo;
+        if (total >= alto) break; // desde aquí solo se aleja
+      }
+      elegido = elegido || ultimo; // pantalla muy chica: una imagen por fila
+
+      // Si se pasa un poco del alto, se angosta el mosaico para que quepa justo.
+      let anchoFinal = ancho;
+      if (elegido.dif !== undefined && elegido.total > alto && elegido.total < alto * 1.4) {
+        const k = elegido.filas.length;
+        anchoFinal = ancho * (alto - GAP * (k - 1)) / (elegido.total - GAP * (k - 1));
+        elegido.hs = alturas(asp, elegido.filas, anchoFinal);
+        elegido.total = elegido.hs.reduce((s, h) => s + h, 0) + GAP * (k - 1);
+      }
+
+      let y = 0;
+      elegido.filas.forEach(([i, j], f) => {
+        const h = elegido.hs[f];
+        let x = 0;
+        for (let n = i; n < j; n++) {
+          const w = asp[n] * h;
+          Object.assign(botones[n].style, {
+            left: x + "px", top: y + "px", width: w + "px", height: h + "px",
+          });
+          x += w + GAP;
+        }
+        y += h + GAP;
+      });
+      Object.assign(mosaico.style, {
+        width: anchoFinal + "px",
+        height: elegido.total + "px",
+        margin: `${Math.max(MARGEN, (innerHeight - elegido.total) / 2)}px auto ${MARGEN}px`,
+      });
+    }
+
+    let pendiente = false;
+    addEventListener("resize", () => {
+      if (pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(() => { pendiente = false; maquetar(); });
+    });
+
+    // ---- Imagen ampliada: crece desde su lugar en el mosaico ----
+    const capa = document.getElementById("ampliada");
+    const grande = capa.querySelector("img");
+    let actual = -1;
+
+    function destino(im) {
+      const esc = Math.min((innerWidth * 0.92) / im.w, (innerHeight * 0.92) / im.h);
+      const w = im.w * esc, h = im.h * esc;
+      return { left: (innerWidth - w) / 2, top: (innerHeight - h) / 2, width: w, height: h };
+    }
+    function desde(r, d) {
+      return `translate(${r.left - d.left}px, ${r.top - d.top}px) scale(${r.width / d.width}, ${r.height / d.height})`;
+    }
+
+    function abrir(i) {
+      actual = i;
+      const im = imagenes[i];
+      const d = destino(im);
+      grande.src = im.mini; // se ve al instante; luego llega la grande
+      const alta = new Image();
+      alta.onload = () => { if (actual === i) grande.src = im.grande; };
+      alta.src = im.grande;
+      Object.assign(grande.style, {
+        left: d.left + "px", top: d.top + "px", width: d.width + "px", height: d.height + "px",
+        transition: "none", transform: desde(botones[i].getBoundingClientRect(), d),
+      });
+      botones[i].style.visibility = "hidden";
+      capa.hidden = false;
+      capa.getBoundingClientRect(); // fuerza el estado inicial antes de animar
+      grande.style.transition = "";
+      grande.style.transform = "none";
+      capa.classList.add("abierta");
+      capa.tabIndex = -1;
+      capa.focus();
+    }
+
+    function cerrar() {
+      if (actual < 0) return;
+      const i = actual;
+      actual = -1;
+      const d = destino(imagenes[i]);
+      grande.style.transition = "";
+      grande.style.transform = desde(botones[i].getBoundingClientRect(), d);
+      capa.classList.remove("abierta");
+      const fin = () => {
+        botones[i].style.visibility = "";
+        if (actual >= 0) return; // se abrió otra mientras se cerraba
+        capa.hidden = true;
+        botones[i].focus({ preventScroll: true });
+      };
+      matchMedia("(prefers-reduced-motion: reduce)").matches ? fin() : setTimeout(fin, 350);
+    }
+
+    // Flechas del teclado: pasar a la imagen anterior / siguiente (da la vuelta).
+    function cambiar(paso) {
+      if (actual < 0) return;
+      botones[actual].style.visibility = "";
+      const i = (actual + paso + imagenes.length) % imagenes.length;
+      actual = i;
+      const im = imagenes[i];
+      const d = destino(im);
+      grande.style.transition = "none";
+      grande.style.transform = "none";
+      Object.assign(grande.style, {
+        left: d.left + "px", top: d.top + "px", width: d.width + "px", height: d.height + "px",
+      });
+      grande.src = im.mini;
+      const alta = new Image();
+      alta.onload = () => { if (actual === i) grande.src = im.grande; };
+      alta.src = im.grande;
+      botones[i].style.visibility = "hidden";
+    }
+
+    capa.addEventListener("click", cerrar);
+    addEventListener("keydown", (e) => {
+      if (e.key === "Escape") cerrar();
+      else if (actual >= 0 && e.key === "ArrowRight") { e.preventDefault(); cambiar(1); }
+      else if (actual >= 0 && e.key === "ArrowLeft") { e.preventDefault(); cambiar(-1); }
+    });
+  })();
+  </script>
 </body>
 </html>
