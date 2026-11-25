@@ -11,7 +11,7 @@ const inicio = document.getElementById("diagrama");
 if (inicio) createRoot(inicio).render(<Diagrama nodes={nodes} edges={edges} />);
 
 const marco = document.getElementById("diagrama-marco");
-if (marco) createRoot(marco).render(<Marco />);
+if (marco) createRoot(marco).render(<Marco archivo={marco.dataset.md} />);
 
 const referentes = document.getElementById("referentes");
 if (referentes) createRoot(referentes).render(<Referentes modo={referentes.dataset.modo} />);

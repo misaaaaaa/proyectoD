@@ -1,11 +1,5 @@
 # Marco teórico
 
-## Conexiones
-
-- Desorientación -> Práctica diagramática : se orienta mediante
-- Práctica diagramática <-> Contagio : se alimentan
-- Desorientación -- Elemento 4
-
 ## Desorientación
 
 Acá va a aparecer texto que va a llevar al texto sobre desorientación

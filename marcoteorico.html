@@ -5,14 +5,342 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marco teórico</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/diagrama.css">
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+
+    #burbujas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .burbuja { cursor: pointer; }
+    .burbuja path {
+      fill: var(--ambar);
+      stroke: var(--negro);
+      stroke-width: 2.5;
+      stroke-linejoin: round;
+      transition: fill 0.25s;
+    }
+    .burbuja:hover path,
+    .burbuja:focus-visible path { fill: #f6e4c2; }
+    .burbuja:focus { outline: none; }
+    .burbuja:focus-visible path { stroke-width: 4; }
+    .burbuja text {
+      font-family: "Moe", sans-serif;
+      fill: var(--negro);
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Tarjeta */
+    .tarjeta-fondo {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(240, 214, 165, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .tarjeta-fondo.abierta {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .tarjeta {
+      position: relative;
+      width: min(32rem, 100%);
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem 1.75rem 1.75rem;
+      background: var(--ambar);
+      border: 2.5px solid var(--negro);
+      border-radius: 1.5rem;
+      transform: scale(0.85);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .tarjeta-fondo.abierta .tarjeta { transform: scale(1); }
+    .tarjeta h2 { margin: 0 0 0.75rem; line-height: 1.1; }
+    .tarjeta p { margin: 0 0 1rem; }
+    .tarjeta-cerrar {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      padding: 0 0.4rem;
+      font-family: "Moe Bold", "Moe", sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--negro);
+      background: none;
+      border: 0;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    .tarjeta-cerrar:hover { background: var(--negro); color: var(--ambar); }
+  </style>
 </head>
 <body>
   <a class="volver" href="index.html" aria-label="Volver al inicio">←</a>
   <main class="diagrama-main">
     <h1 class="visually-hidden">Marco teórico</h1>
-    <div id="diagrama-marco"></div>
+    <svg id="burbujas" aria-label="Elementos del marco teórico"></svg>
   </main>
-  <script src="assets/diagrama.js"></script>
+
+  <div class="tarjeta-fondo" id="tarjeta-fondo" aria-hidden="true">
+    <article class="tarjeta" role="dialog" aria-modal="true" aria-labelledby="tarjeta-titulo">
+      <button class="tarjeta-cerrar" type="button" aria-label="Cerrar">×</button>
+      <h2 id="tarjeta-titulo"></h2>
+      <div id="tarjeta-cuerpo"></div>
+    </article>
+  </div>
+
+  <script>
+  // El contenido vive en contenido/marcoteorico.md:
+  // cada "## Encabezado" es una burbuja y el texto debajo va a su tarjeta.
+  function parsear(md) {
+    return md
+      .split(/^## /m)
+      .slice(1)
+      .map((bloque) => {
+        const [titulo, ...resto] = bloque.split("\n");
+        const parrafos = resto.join("\n").trim().split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+        return { titulo: titulo.trim(), parrafos };
+      })
+      .filter((el) => el.titulo);
+  }
+
+  fetch("contenido/marcoteorico.md")
+    .then((r) => r.text())
+    .then((md) => iniciar(parsear(md)))
+    .catch(() => iniciar([]));
+
+  function iniciar(ELEMENTOS) {
+    const TAMANOS = [1.0, 0.85, 0.95, 0.78]; // radio relativo de cada burbuja
+
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.getElementById("burbujas");
+    const PUNTOS = 72; // vértices por contorno
+    const reducirMovimiento = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let W = 0, H = 0, escala = 1;
+
+    const burbujas = ELEMENTOS.map((el, i) => {
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("class", "burbuja");
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.setAttribute("aria-label", el.titulo);
+      const path = document.createElementNS(NS, "path");
+      const text = document.createElementNS(NS, "text");
+      // reparte el título en líneas cortas para que quepa en la burbuja
+      const lineas = [];
+      for (const palabra of el.titulo.split(/\s+/)) {
+        const ultima = lineas[lineas.length - 1];
+        if (ultima && (ultima + " " + palabra).length <= 12) lineas[lineas.length - 1] += " " + palabra;
+        else lineas.push(palabra);
+      }
+      lineas.forEach((linea, k) => {
+        const ts = document.createElementNS(NS, "tspan");
+        ts.textContent = linea;
+        ts.setAttribute("x", "0");
+        ts.setAttribute("dy", k === 0 ? `${-(lineas.length - 1) * 0.55}em` : "1.1em");
+        text.append(ts);
+      });
+      g.append(path, text);
+      svg.append(g);
+
+      const ang = (i / ELEMENTOS.length) * Math.PI * 2 + 0.4;
+      const b = {
+        i, g, path, text,
+        base: TAMANOS[i % TAMANOS.length],
+        r: 0, x: Math.cos(ang) * 50, y: Math.sin(ang) * 50, vx: 0, vy: 0,
+        anchoTexto: 1, altoTexto: 1, // tamaño del título a font-size 1
+        hover: 0, hoverObj: 0,
+        // fases aleatorias para la deriva y la vibración
+        fase: Array.from({ length: 6 }, () => Math.random() * Math.PI * 2),
+      };
+      g.addEventListener("pointerenter", () => (b.hoverObj = 1));
+      g.addEventListener("pointerleave", () => (b.hoverObj = 0));
+      g.addEventListener("click", () => abrir(i));
+      g.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(i); }
+      });
+      return b;
+    });
+
+    function redimensionar() {
+      W = innerWidth; H = innerHeight;
+      svg.setAttribute("viewBox", `${-W / 2} ${-H / 2} ${W} ${H}`);
+      escala = Math.min(W / 5.4, H / 4.6) / Math.sqrt(Math.max(burbujas.length, 4) / 4);
+      for (const b of burbujas) {
+        const r = escala * b.base;
+        const fs = Math.min(r * 0.22, (r * 1.5) / b.anchoTexto, (r * 1.2) / b.altoTexto);
+        b.text.setAttribute("font-size", Math.max(11, fs).toFixed(1));
+      }
+    }
+    function medirTitulos() {
+      for (const b of burbujas) {
+        b.text.setAttribute("font-size", "100");
+        const caja = b.text.getBBox();
+        b.anchoTexto = caja.width / 100 || 1;
+        b.altoTexto = caja.height / 100 || 1;
+      }
+      redimensionar();
+    }
+    addEventListener("resize", redimensionar);
+    medirTitulos();
+    document.fonts.ready.then(medirTitulos); // re-medir cuando cargue Moe
+
+    // ---- Física: atracción al centro + contacto entre burbujas ----
+    const SOLAPE = 0.88; // < 1: las burbujas se aprietan y forman paredes planas
+
+    function fisica(t, dt) {
+      for (const b of burbujas) {
+        b.hover += (b.hoverObj - b.hover) * Math.min(1, dt * 8);
+        const respira = 1 + 0.025 * Math.sin(t * 0.6 + b.fase[0]);
+        b.r = escala * b.base * respira * (1 + 0.06 * b.hover);
+
+        // atracción suave al centro
+        b.vx += -b.x * 0.3 * dt;
+        b.vy += -b.y * 0.3 * dt;
+        // deriva lenta
+        b.vx += Math.sin(t * 0.21 + b.fase[1]) * 6 * dt;
+        b.vy += Math.cos(t * 0.17 + b.fase[2]) * 6 * dt;
+      }
+      // contacto
+      for (let a = 0; a < burbujas.length; a++) {
+        for (let c = a + 1; c < burbujas.length; c++) {
+          const A = burbujas[a], C = burbujas[c];
+          let dx = C.x - A.x, dy = C.y - A.y;
+          let d = Math.hypot(dx, dy) || 0.001;
+          const ideal = (A.r + C.r) * SOLAPE;
+          if (d < ideal) {
+            const empuje = (ideal - d) * 8 * dt;
+            const nx = dx / d, ny = dy / d;
+            A.vx -= nx * empuje; A.vy -= ny * empuje;
+            C.vx += nx * empuje; C.vy += ny * empuje;
+          }
+        }
+      }
+      // mantener el grupo centrado en pantalla
+      if (burbujas.length) {
+        const cx = burbujas.reduce((s, b) => s + b.x, 0) / burbujas.length;
+        const cy = burbujas.reduce((s, b) => s + b.y, 0) / burbujas.length;
+        for (const b of burbujas) { b.x -= cx * 0.05; b.y -= cy * 0.05; }
+      }
+      for (const b of burbujas) {
+        const amort = Math.exp(-2.2 * dt);
+        b.vx *= amort; b.vy *= amort;
+        b.x += b.vx * dt * 10;
+        b.y += b.vy * dt * 10;
+      }
+    }
+
+    // ---- Contorno: círculo vibrante recortado por las paredes compartidas ----
+    function contorno(b, t) {
+      const pts = [];
+      const amp = b.r * (0.012 + 0.01 * b.hover);
+      for (let k = 0; k < PUNTOS; k++) {
+        const th = (k / PUNTOS) * Math.PI * 2;
+        const ux = Math.cos(th), uy = Math.sin(th);
+        let r = b.r
+          + amp * Math.sin(3 * th + t * 1.9 + b.fase[3])
+          + amp * 0.8 * Math.sin(5 * th - t * 2.7 + b.fase[4])
+          + amp * 0.5 * Math.sin(9 * th + t * 4.3 + b.fase[5]);
+
+        // pared plana con cada vecina (eje radical)
+        for (const o of burbujas) {
+          if (o === b) continue;
+          const dx = o.x - b.x, dy = o.y - b.y;
+          const d = Math.hypot(dx, dy);
+          if (d >= b.r + o.r) continue;
+          const nx = dx / d, ny = dy / d;
+          const dot = ux * nx + uy * ny;
+          if (dot <= 0) continue;
+          const plano = (d * d + b.r * b.r - o.r * o.r) / (2 * d);
+          // la pared también vibra, pero igual para ambas burbujas
+          const px = b.x + nx * plano, py = b.y + ny * plano;
+          const wob = Math.sin((px + py) * 0.05 + t * 2.2) * amp * 0.4;
+          const limite = (plano + wob) / dot;
+          if (limite < r) r = limite;
+        }
+        pts.push([b.x + ux * r, b.y + uy * r]);
+      }
+      return suavizar(pts);
+    }
+
+    // Catmull-Rom cerrado -> curvas Bézier
+    function suavizar(p) {
+      const n = p.length;
+      let d = `M${p[0][0].toFixed(1)},${p[0][1].toFixed(1)}`;
+      for (let i = 0; i < n; i++) {
+        const p0 = p[(i - 1 + n) % n], p1 = p[i], p2 = p[(i + 1) % n], p3 = p[(i + 2) % n];
+        const c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+        const c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+        d += `C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+      }
+      return d + "Z";
+    }
+
+    function dibujar(t) {
+      for (const b of burbujas) {
+        b.path.setAttribute("d", contorno(b, t));
+        b.text.setAttribute("transform", `translate(${b.x.toFixed(1)} ${b.y.toFixed(1)})`);
+      }
+    }
+
+    // asentar antes del primer cuadro para que aparezcan ya en contacto
+    for (let s = 0; s < 600; s++) fisica(s / 60, 1 / 60);
+
+    let previo = performance.now();
+    function cuadro(ahora) {
+      const dt = Math.min(0.05, (ahora - previo) / 1000);
+      previo = ahora;
+      const t = ahora / 1000;
+      fisica(t, reducirMovimiento ? dt * 0.15 : dt);
+      dibujar(reducirMovimiento ? t * 0.15 : t);
+      requestAnimationFrame(cuadro);
+    }
+    requestAnimationFrame(cuadro);
+
+    // ---- Tarjeta ----
+    const fondo = document.getElementById("tarjeta-fondo");
+    const titulo = document.getElementById("tarjeta-titulo");
+    const cuerpo = document.getElementById("tarjeta-cuerpo");
+    const cerrarBtn = fondo.querySelector(".tarjeta-cerrar");
+    let origen = null;
+
+    function abrir(i) {
+      origen = burbujas[i].g;
+      titulo.textContent = ELEMENTOS[i].titulo;
+      cuerpo.replaceChildren(...ELEMENTOS[i].parrafos.map((texto) => {
+        const p = document.createElement("p");
+        p.textContent = texto;
+        return p;
+      }));
+      fondo.classList.add("abierta");
+      fondo.setAttribute("aria-hidden", "false");
+      cerrarBtn.focus();
+    }
+    function cerrar() {
+      fondo.classList.remove("abierta");
+      fondo.setAttribute("aria-hidden", "true");
+      if (origen) origen.focus();
+    }
+    cerrarBtn.addEventListener("click", cerrar);
+    fondo.addEventListener("click", (e) => { if (e.target === fondo) cerrar(); });
+    addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && fondo.classList.contains("abierta")) cerrar();
+    });
+  }
+  </script>
 </body>
 </html>

@@ -32,7 +32,7 @@ git push
 
 ## Cómo construir los diagramas del sitio
 
-Los diagramas de `index.html` y `marcoteorico.html` están hechos con [React Flow](https://reactflow.dev). El código fuente está en `diagrama/` y se compila a `assets/diagrama.js` y `assets/diagrama.css`, que son los archivos que cargan las páginas.
+Los diagramas de `index.html` y `metodologia.html` están hechos con [React Flow](https://reactflow.dev). El código fuente está en `diagrama/` y se compila a `assets/diagrama.js` y `assets/diagrama.css`, que son los archivos que cargan las páginas.
 
 ### Preparación (una sola vez)
 
@@ -50,11 +50,11 @@ Cada vez que cambies algo dentro de `diagrama/`:
 npm run build
 ```
 
-Cambiar solo `contenido/marcoteorico.md` **no** requiere compilar: basta recargar la página.
+Cambiar solo los `.md` de `contenido/` **no** requiere compilar: basta recargar la página.
 
 ### Ver el sitio
 
-La página de marco teórico carga el `.md` con `fetch`, así que no funciona abriendo el archivo con doble click. Usa un servidor local:
+Las páginas cargan los `.md` con `fetch`, así que no funciona abriendo el archivo con doble click. Usa un servidor local:
 
 ```
 python3 -m http.server 8000
@@ -68,7 +68,8 @@ y abre `http://localhost:8000`.
 |---|---|
 | `contenido/` | Archivos `.md` con el contenido de cada página (`marcoteorico.md`, `referentes.md`, `ensayos.md`, `metodologia.md`, `biblio.md`) |
 | `diagrama/src/datos.js` | Nodos y conexiones del diagrama del inicio |
-| `diagrama/src/marco.jsx` | Lee `contenido/marcoteorico.md` y arma el diagrama con su overlay |
+| `diagrama/src/marco.jsx` | Lee el `.md` indicado en `data-md` (en `metodologia.html`: `contenido/metodologia.md`) y arma el diagrama con su overlay |
+| `marcoteorico.html` | Burbujas animadas (sin React ni compilación) que leen `contenido/marcoteorico.md` |
 | `diagrama/src/referentes.jsx` | Lee `contenido/referentes.md`. En `referentes.html` alterna las imágenes cada 100 ms (GIF); en `mosaico.html` las muestra todas en grilla. Al hacer click abre una tarjeta con la imagen y su texto |
 | `diagrama/src/biblio.jsx` | Lee `contenido/biblio.md` y lo muestra como texto en `biblio.html` |
 | `diagrama/src/Diagrama.jsx` | Componente base (burbujas y React Flow) |
@@ -80,9 +81,13 @@ y abre `http://localhost:8000`.
 
 Se edita en `diagrama/src/datos.js`: la lista `secciones` define las burbujas que rodean al centro (nombre y página a la que enlazan). Luego, compilar.
 
-### Diagrama del marco teórico
+### Burbujas del marco teórico
 
-Se construye desde `contenido/marcoteorico.md`:
+`marcoteorico.html` lee `contenido/marcoteorico.md`: cada `## Título` es una burbuja y el texto plano de abajo aparece en una tarjeta al hacer click. Los párrafos se separan con una línea en blanco; no se interpreta markdown ni hay conexiones. No requiere compilar.
+
+### Diagrama de metodología
+
+Se construye desde `contenido/metodologia.md`:
 
 - Cada `## Título` es una burbuja. El texto de abajo aparece en un overlay al hacer click (se cierra con ×, con Esc o haciendo click fuera).
 - El contenido del overlay se escribe en markdown.
