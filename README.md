@@ -113,7 +113,7 @@ Los nombres deben coincidir con el título de un `##`; no importan mayúsculas n
 
 ### Imágenes de ensayos
 
-`ensayos.html` muestra un mosaico con todas las imágenes de la [carpeta de Drive de ensayos](https://drive.google.com/drive/folders/1yYJf2z1NUmC-VdI_B7qYFNOf2jar006a) (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
+`ensayos.html` muestra un mosaico con todas las imágenes de la carpeta de ensayos en Drive (incluidas sus subcarpetas). Al hacer click, la imagen se amplía.
 
 Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de ensayos desde Google Drive" corre sola todos los días (y también a mano desde la pestaña Actions). Usa `scripts/sync_ensayos.py`, que:
 
@@ -121,7 +121,7 @@ Las imágenes **no se suben a mano**: la GitHub Action "Actualizar imágenes de 
 - guarda dos versiones livianas en WebP: `imagenes/ensayos/mini/` (mosaico) e `imagenes/ensayos/grande/` (ampliada);
 - escribe `contenido/ensayos-imagenes.json`, que es lo que lee la página.
 
-La carpeta debe seguir compartida como "cualquier persona con el enlace". Para correrlo en tu computador: `pip install Pillow` y luego `python3 scripts/sync_ensayos.py`.
+La carpeta debe seguir compartida como "cualquier persona con el enlace". El ID de la carpeta no está en el repo: la Action lo lee del secret `CARPETA_ID` (Settings → Secrets and variables → Actions). Para correrlo en tu computador: `pip install Pillow` y luego `CARPETA_ID=<id> python3 scripts/sync_ensayos.py`.
 
 ### Tipografías
 

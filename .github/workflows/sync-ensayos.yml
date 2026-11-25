@@ -19,9 +19,9 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -29,6 +29,9 @@ jobs:
         run: pip install Pillow
 
       - name: Traer imágenes de la carpeta de Drive
+        env:
+          CARPETA_ID: ${{ secrets.CARPETA_ID }}
+        shell: bash # con pipefail: si el script falla, el paso falla
         run: python3 scripts/sync_ensayos.py | tee salida.txt
 
       - name: Commit y push
