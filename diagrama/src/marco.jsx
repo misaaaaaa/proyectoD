@@ -87,16 +87,16 @@ function parsear(md) {
   };
 }
 
-export default function Marco() {
+export default function Marco({ archivo = "contenido/marcoteorico.md" }) {
   const [datos, setDatos] = useState(null);
   const [abierto, setAbierto] = useState(null);
 
   useEffect(() => {
-    fetch("contenido/marcoteorico.md")
+    fetch(archivo)
       .then((r) => r.text())
       .then((t) => setDatos(parsear(t)))
       .catch(() => setDatos({ items: [], edges: [], posiciones: [] }));
-  }, []);
+  }, [archivo]);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setAbierto(null);
