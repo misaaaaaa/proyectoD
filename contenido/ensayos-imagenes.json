@@ -1,13 +1,5 @@
 [
  {
-  "id": "1BABrKnObxtkOTC2NfDivwGoLBgyzy-og",
-  "nombre": "astronomia.jpg",
-  "mini": "imagenes/ensayos/mini/astronomia.webp",
-  "w": 580,
-  "h": 700,
-  "grande": "imagenes/ensayos/grande/astronomia.webp"
- },
- {
   "id": "1jweQpZtsAAPPccP_ttPQpKllZHD1Hdvk",
   "nombre": "diagrama_manuscrito_fiel_circular_v4.png",
   "mini": "imagenes/ensayos/mini/diagrama_manuscrito_fiel_circular_v4.webp",
@@ -16,12 +8,20 @@
   "grande": "imagenes/ensayos/grande/diagrama_manuscrito_fiel_circular_v4.webp"
  },
  {
-  "id": "1wSHlxCUWdpbEyfBIhUlCOBCTec4CBEti",
-  "nombre": "peso.jpg",
-  "mini": "imagenes/ensayos/mini/peso.webp",
+  "id": "1ia8OuOANIYtb6sLMdZba6cVWnboUAckp",
+  "nombre": "metafora.png",
+  "mini": "imagenes/ensayos/mini/metafora.webp",
   "w": 541,
   "h": 700,
-  "grande": "imagenes/ensayos/grande/peso.webp"
+  "grande": "imagenes/ensayos/grande/metafora.webp"
+ },
+ {
+  "id": "1aJVZZKw4R2qUwM4Kk1GqHan0ragb_HxD",
+  "nombre": "naranjasycometas.png",
+  "mini": "imagenes/ensayos/mini/naranjasycometas.webp",
+  "w": 580,
+  "h": 700,
+  "grande": "imagenes/ensayos/grande/naranjasycometas.webp"
  },
  {
   "id": "12FLvyH3r5KklrCwkgKU9uZDdzatpy430",
