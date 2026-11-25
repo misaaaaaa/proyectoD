@@ -118,5 +118,13 @@
   "w": 355,
   "h": 700,
   "grande": "imagenes/ensayos/grande/sin_fondo/plantilla_simbolos.webp"
+ },
+ {
+  "id": "1gdM1OAXjGy8TkkceeQbSqu9rpm325F6h",
+  "nombre": "sin_fondo/SF_flechas celeste.png",
+  "mini": "imagenes/ensayos/mini/sin_fondo/SF_flechas celeste.webp",
+  "w": 700,
+  "h": 431,
+  "grande": "imagenes/ensayos/grande/sin_fondo/SF_flechas celeste.webp"
  }
 ]
